@@ -1,0 +1,116 @@
+/* Default theme tokens */
+:root {
+  /* Card */
+  --card-bg: var(--color-light, #f8f7f4);
+  --card-bg-alt: var(--color-white, #fffcf6);
+  --card-border: 1px solid var(--color-medium, #e8e4df);
+  --card-radius: var(--radius-large, 12px);
+  --card-padding: 2.5rem;
+  --card-gap: 1.25rem;
+  --card-transition: all var(--transition-normal, 0.3s ease);
+
+  /* Card hover */
+  --card-hover-transform: translateY(-4px);
+  --card-hover-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.1));
+  --card-hover-border-color: var(--color-primary-accent, #C4A8E0);
+  --card-hover-bg: var(--card-bg);
+
+  /* Card accent bar */
+  --card-accent-color: var(--gradient-accent, linear-gradient(135deg, #C4A8E0, #E8C4A0));
+
+  /* Card icon */
+  --card-icon-size: 48px;
+  --card-icon-bg: var(--color-primary, #6C3BAA);
+  --card-icon-color: var(--color-white, #fffcf6);
+  --card-icon-radius: var(--radius-medium, 8px);
+
+  /* Card content */
+  --card-title-color: var(--color-black, #1a1a1a);
+  --card-description-color: var(--color-muted, #999);
+
+  /* Service card */
+  --card-highlight-color: var(--color-dark, #333);
+  --card-highlight-dot: var(--color-accent, #FFE8D0);
+  --card-highlight-dot-radius: 50%;
+
+  /* Approach card */
+  --card-badge-color: var(--color-accent, #FFE8D0);
+  --card-badge-opacity: 0.7;
+
+  /* Showcase card */
+  --card-type-color: var(--color-primary, #6C3BAA);
+  --card-arrow-color: var(--color-muted, #999);
+
+  /* Content elements */
+  --content-heading-color: var(--color-black, #1a1a1a);
+  --content-body-color: var(--color-dark, #333);
+  --content-muted-color: var(--color-muted, #999);
+  --content-label-color: var(--color-primary, #6C3BAA);
+  --content-border-color: var(--color-medium, #e8e4df);
+  --content-panel-bg: var(--color-white, #fffcf6);
+  --content-panel-radius: var(--radius-medium, 8px);
+
+  /* Form */
+  --form-bg: var(--color-white, #fffcf6);
+  --form-border: 1px solid var(--color-medium, #e8e4df);
+  --form-radius: var(--radius-large, 12px);
+  --form-label-color: var(--color-dark, #333);
+  --form-input-bg: var(--color-white, #fffcf6);
+  --form-input-border: 1px solid var(--color-medium, #e8e4df);
+  --form-input-color: var(--color-dark, #333);
+  --form-input-radius: var(--radius-medium, 8px);
+  --form-focus-border-color: var(--color-primary, #6C3BAA);
+  --form-focus-shadow: 0 0 0 3px rgba(108, 59, 170, 0.1);
+  --form-placeholder-color: var(--color-muted, #999);
+  --form-label-font: inherit;
+  --form-input-font: inherit;
+  --form-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.05));
+  --form-padding: 2.5rem;
+  --form-success-bg: rgba(108, 59, 170, 0.1);
+  --form-success-color: var(--color-secondary-dark, #553090);
+  --form-submit-bg: var(--gradient-accent, linear-gradient(135deg, #C4A8E0, #E8C4A0));
+  --form-submit-color: var(--color-black, #1a1a1a);
+  --form-submit-radius: var(--radius-medium, 8px);
+  --form-submit-font: inherit;
+  --form-submit-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.1));
+  --form-submit-hover-transform: translateY(-2px);
+  --form-submit-hover-shadow: var(--shadow-strong, 0 8px 24px rgba(0, 0, 0, 0.15));
+
+  /* Phone button */
+  --phone-bg: var(--color-white, #fffcf6);
+  --phone-color: var(--color-primary, #6C3BAA);
+  --phone-border: 2px solid var(--color-primary, #6C3BAA);
+  --phone-radius: var(--radius-medium, 8px);
+  --phone-font: inherit;
+  --phone-hover-bg: var(--color-primary, #6C3BAA);
+  --phone-hover-color: var(--color-white, #fffcf6);
+  --phone-hover-transform: translateY(-2px);
+  --phone-hover-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.1));
+
+  /* Hero */
+  --hero-bg: var(--gradient-hero);
+  --hero-headline-color: var(--color-white, #fffcf6);
+  --hero-accent-color: var(--color-accent, #FFE8D0);
+  --hero-subheadline-color: rgba(255, 252, 246, 0.8);
+
+  /* Footer */
+  --footer-accent-bg: var(--gradient-accent, linear-gradient(135deg, #C4A8E0, #E8C4A0));
+}
+
+/* Dark background context — sections with gradient/dark backgrounds */
+.dark-context {
+  --section-header-title-color: var(--color-white, #fffcf6);
+  --section-header-subtitle-color: rgba(255, 252, 246, 0.75);
+  --card-bg: rgba(255, 252, 246, 0.05);
+  --card-border: 1px solid rgba(255, 252, 246, 0.1);
+  --card-hover-transform: none;
+  --card-hover-shadow: none;
+  --card-hover-bg: rgba(255, 252, 246, 0.08);
+  --card-hover-border-color: rgba(255, 232, 208, 0.3);
+  --card-icon-bg: transparent;
+  --card-icon-color: var(--color-accent, #FFE8D0);
+  --card-icon-radius: 0;
+  --card-title-color: var(--color-white, #fffcf6);
+  --card-description-color: rgba(255, 252, 246, 0.7);
+  --card-badge-color: var(--color-accent, #FFE8D0);
+}

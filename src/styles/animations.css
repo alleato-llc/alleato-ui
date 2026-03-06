@@ -1,0 +1,47 @@
+/* Scroll-triggered animations */
+
+/* Default theme: fade-up */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-animate].animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Terminal mode: boot-flicker */
+body.terminal-mode [data-animate] {
+  opacity: 0;
+  transform: none;
+  transition: none;
+}
+
+body.terminal-mode [data-animate].animate-visible {
+  animation: boot-flicker 0.4s ease forwards;
+}
+
+@keyframes boot-flicker {
+  0% { opacity: 0; }
+  20% { opacity: 0.8; }
+  35% { opacity: 0.2; }
+  55% { opacity: 0.9; }
+  70% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  body.terminal-mode [data-animate].animate-visible {
+    animation: none;
+    opacity: 1;
+  }
+}

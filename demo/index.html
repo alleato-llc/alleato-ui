@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@alleato/ui Demo</title>
+    <style>
+      :root {
+        --color-primary: #6C3BAA;
+        --color-primary-light: #8A5CC4;
+        --color-primary-dark: #553090;
+        --color-primary-accent: #C4A8E0;
+        --color-white: #fffcf6;
+        --color-light: #f8f7f4;
+        --color-medium: #e8e4df;
+        --color-muted: #999;
+        --color-dark: #333;
+        --color-black: #1a1a1a;
+        --color-accent: #FFE8D0;
+        --color-secondary-dark: #553090;
+        --gradient-accent: linear-gradient(135deg, #C4A8E0, #E8C4A0);
+        --gradient-hero: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        --font-heading: 'Georgia', serif;
+        --font-body: system-ui, sans-serif;
+        --font-mono: 'Courier New', monospace;
+        --radius-small: 4px;
+        --radius-medium: 8px;
+        --radius-large: 12px;
+        --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.15);
+        --shadow-glow: 0 0 20px rgba(255, 232, 208, 0.3);
+        --transition-fast: 0.2s ease;
+        --transition-normal: 0.3s ease;
+        --container-width: 1200px;
+
+        /* Terminal mode variables (used when body.terminal-mode is active) */
+        --term-green: #00ff41;
+        --term-green-light: #66ff88;
+        --term-bg: #0d1117;
+        --term-bg-card: #161b22;
+        --term-border: #1a3a1a;
+        --term-text-secondary: #8b949e;
+        --term-text-body: #c9d1d9;
+        --term-text-muted: #484f58;
+        --term-accent: #8A5CC4;
+        --term-accent-light: #C4A8E0;
+        --term-bg-hover: #1c2333;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--color-dark);
+        background: var(--color-white);
+        margin: 0;
+      }
+
+      .demo-section {
+        padding: 2rem;
+        border-bottom: 1px solid var(--color-medium);
+      }
+
+      .demo-section h2 {
+        font-family: var(--font-heading);
+        margin-bottom: 1rem;
+        color: var(--color-black);
+      }
+
+      .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .icon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        border: 1px solid var(--color-medium);
+        border-radius: var(--radius-medium);
+      }
+
+      .icon-item alleato-icon {
+        --icon-size: 32px;
+        color: var(--color-primary);
+      }
+
+      .icon-item span {
+        font-size: 0.8rem;
+        color: var(--color-muted);
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .theme-toggle-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: var(--radius-medium);
+        cursor: pointer;
+        font-weight: 600;
+        z-index: 1000;
+      }
+
+      body.terminal-mode .theme-toggle-btn {
+        background: var(--term-green);
+        color: var(--term-bg);
+        border-radius: 0;
+      }
+    </style>
+    <script type="module" src="./main.ts"></script>
+  </head>
+  <body>
+    <button class="theme-toggle-btn" id="theme-toggle">Toggle Terminal Mode</button>
+
+    <!-- NavBar -->
+    <alleato-nav-bar id="demo-nav" brand="Alleato" logo="logo"></alleato-nav-bar>
+
+    <!-- Icons -->
+    <div class="demo-section">
+      <h2>Icons</h2>
+      <div class="icon-grid">
+        <div class="icon-item"><alleato-icon name="app"></alleato-icon><span>app</span></div>
+        <div class="icon-item"><alleato-icon name="cicd"></alleato-icon><span>cicd</span></div>
+        <div class="icon-item"><alleato-icon name="culture"></alleato-icon><span>culture</span></div>
+        <div class="icon-item"><alleato-icon name="collaboration"></alleato-icon><span>collaboration</span></div>
+        <div class="icon-item"><alleato-icon name="people"></alleato-icon><span>people</span></div>
+        <div class="icon-item"><alleato-icon name="adapt"></alleato-icon><span>adapt</span></div>
+        <div class="icon-item"><alleato-icon name="software"></alleato-icon><span>software</span></div>
+        <div class="icon-item"><alleato-icon name="resume"></alleato-icon><span>resume</span></div>
+        <div class="icon-item"><alleato-icon name="github"></alleato-icon><span>github</span></div>
+        <div class="icon-item"><alleato-icon name="books"></alleato-icon><span>books</span></div>
+        <div class="icon-item"><alleato-icon name="blog"></alleato-icon><span>blog</span></div>
+        <div class="icon-item"><alleato-icon name="arrow"></alleato-icon><span>arrow</span></div>
+        <div class="icon-item"><alleato-icon name="logo"></alleato-icon><span>logo</span></div>
+      </div>
+    </div>
+
+    <!-- Section Header -->
+    <div class="demo-section">
+      <h2>Section Header</h2>
+      <alleato-section-header heading="Our Focus Areas" subtitle="What we specialize in"></alleato-section-header>
+    </div>
+
+    <!-- Page Section -->
+    <alleato-page-section heading="Technologies" subtitle="Tools and frameworks we use">
+      <p>This content is slotted into the page section component.</p>
+    </alleato-page-section>
+
+    <!-- Service Cards -->
+    <div class="demo-section">
+      <h2>Service Cards</h2>
+      <div class="card-grid">
+        <alleato-service-card
+          id="service-1"
+          icon="app"
+          heading="Platform Design"
+          description="Building scalable, maintainable systems."
+          hoverable
+        ></alleato-service-card>
+        <alleato-service-card
+          id="service-2"
+          icon="cicd"
+          heading="CI/CD"
+          description="Automated pipelines for fast, reliable delivery."
+          hoverable
+        ></alleato-service-card>
+        <alleato-service-card
+          id="service-3"
+          icon="culture"
+          heading="Engineering Culture"
+          description="Fostering collaboration and growth."
+          hoverable
+        ></alleato-service-card>
+      </div>
+    </div>
+
+    <!-- Approach Cards -->
+    <div class="demo-section">
+      <h2>Approach Cards</h2>
+      <div class="card-grid">
+        <alleato-approach-card
+          icon="collaboration"
+          heading="Honest Dialogue"
+          description="We speak plainly and listen deeply."
+          badge="01"
+          hoverable
+        ></alleato-approach-card>
+        <alleato-approach-card
+          icon="people"
+          heading="People First"
+          description="Technology serves people, not the other way around."
+          badge="02"
+          hoverable
+        ></alleato-approach-card>
+      </div>
+    </div>
+
+    <!-- Showcase Cards -->
+    <div class="demo-section">
+      <h2>Showcase Cards</h2>
+      <div class="card-grid">
+        <alleato-showcase-card
+          icon="github"
+          heading="alleato-ui"
+          description="Reusable Web Components for Alleato projects."
+          type="GitHub"
+          hoverable
+        ></alleato-showcase-card>
+        <alleato-showcase-card
+          icon="blog"
+          heading="Engineering Blog"
+          description="Thoughts on software engineering and culture."
+          type="Blog"
+          hoverable
+        ></alleato-showcase-card>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="demo-section">
+      <h2>Form</h2>
+      <alleato-form-container id="demo-form" submit-text="Send Message" success-message="Message sent!">
+        <alleato-form-field slot="row" label="Name" name="name" placeholder="Your name" required></alleato-form-field>
+        <alleato-form-field slot="row" label="Email" name="email" type="email" placeholder="you@example.com" required></alleato-form-field>
+        <alleato-form-field label="Message" name="message" type="textarea" placeholder="Your message..." required></alleato-form-field>
+      </alleato-form-container>
+    </div>
+
+    <!-- Footer -->
+    <alleato-site-footer
+      brand="Alleato"
+      logo="logo"
+      tagline="Your engineering ally."
+      location="New York, NY"
+      badge="LLC"
+      copyright="&copy; 2025 Alleato LLC. All rights reserved."
+    ></alleato-site-footer>
+  </body>
+</html>

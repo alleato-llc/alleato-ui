@@ -1,0 +1,150 @@
+/* Terminal theme token overrides */
+body.terminal-mode {
+  /* Card */
+  --card-bg: var(--term-bg-card, #161b22);
+  --card-bg-alt: var(--term-bg-card, #161b22);
+  --card-border: 1px solid var(--term-border, #1a3a1a);
+  --card-radius: 0;
+  --card-padding: 1.5rem;
+
+  /* Card hover */
+  --card-hover-transform: none;
+  --card-hover-shadow: 0 0 10px rgba(0, 255, 65, 0.15);
+  --card-hover-border-color: var(--term-green, #00ff41);
+  --card-hover-bg: var(--term-bg-hover, #1c2333);
+
+  /* Card accent bar */
+  --card-accent-color: var(--term-green, #00ff41);
+
+  /* Card icon */
+  --card-icon-bg: var(--term-border, #1a3a1a);
+  --card-icon-color: var(--term-green, #00ff41);
+  --card-icon-radius: 0;
+
+  /* Card content */
+  --card-title-color: var(--term-green, #00ff41);
+  --card-description-color: var(--term-text-secondary, #8b949e);
+
+  /* Service card */
+  --card-highlight-color: var(--term-text-body, #c9d1d9);
+  --card-highlight-dot: var(--term-green, #00ff41);
+  --card-highlight-dot-radius: 0;
+
+  /* Approach card */
+  --card-badge-color: var(--term-green, #00ff41);
+  --card-badge-opacity: 1;
+
+  /* Showcase card */
+  --card-type-color: var(--term-accent, #8A5CC4);
+  --card-arrow-color: var(--term-green, #00ff41);
+
+  /* Section */
+  --section-bg: var(--term-bg, #0d1117);
+  --section-header-title-color: var(--term-green, #00ff41);
+  --section-header-subtitle-color: var(--term-text-secondary, #8b949e);
+
+  /* Content elements */
+  --content-heading-color: var(--term-green, #00ff41);
+  --content-body-color: var(--term-text-body, #c9d1d9);
+  --content-muted-color: var(--term-text-secondary, #8b949e);
+  --content-label-color: var(--term-accent, #8A5CC4);
+  --content-border-color: var(--term-border, #1a3a1a);
+  --content-panel-bg: var(--term-bg-card, #161b22);
+  --content-panel-radius: 0;
+
+  /* Form */
+  --form-bg: var(--term-bg-card, #161b22);
+  --form-border: 1px solid var(--term-border, #1a3a1a);
+  --form-radius: 0;
+  --form-label-color: var(--term-green, #00ff41);
+  --form-label-font: 'JetBrains Mono', monospace;
+  --form-input-bg: var(--term-bg, #0d1117);
+  --form-input-border: 1px solid var(--term-border, #1a3a1a);
+  --form-input-color: var(--term-text-body, #c9d1d9);
+  --form-input-radius: 0;
+  --form-input-font: 'JetBrains Mono', monospace;
+  --form-focus-border-color: var(--term-green, #00ff41);
+  --form-focus-shadow: 0 0 0 2px rgba(0, 255, 65, 0.15);
+  --form-placeholder-color: var(--term-text-muted, #484f58);
+  --form-shadow: none;
+  --form-padding: 2.5rem;
+  --form-success-bg: rgba(0, 255, 65, 0.1);
+  --form-success-color: var(--term-green, #00ff41);
+  --form-submit-bg: var(--term-green, #00ff41);
+  --form-submit-color: var(--term-bg, #0d1117);
+  --form-submit-radius: 0;
+  --form-submit-font: 'JetBrains Mono', monospace;
+  --form-submit-shadow: none;
+  --form-submit-hover-transform: none;
+  --form-submit-hover-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+
+  /* Phone button */
+  --phone-bg: transparent;
+  --phone-color: var(--term-green, #00ff41);
+  --phone-border: 1px solid var(--term-green, #00ff41);
+  --phone-radius: 0;
+  --phone-font: 'JetBrains Mono', monospace;
+  --phone-hover-bg: var(--term-green, #00ff41);
+  --phone-hover-color: var(--term-bg, #0d1117);
+  --phone-hover-transform: none;
+  --phone-hover-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+
+  /* Hero */
+  --hero-bg: var(--term-bg, #0d1117);
+  --hero-headline-color: var(--term-green, #00ff41);
+  --hero-accent-color: var(--term-accent-light, #C4A8E0);
+  --hero-subheadline-color: var(--term-text-secondary, #8b949e);
+
+  /* Theme toggle */
+  --toggle-icon-color: var(--term-green, #00ff41);
+  --toggle-label-color: var(--term-green, #00ff41);
+  --toggle-label-font: 'JetBrains Mono', monospace;
+  --toggle-track-bg: var(--term-border, #1a3a1a);
+  --toggle-track-active-bg: var(--term-green, #00ff41);
+  --toggle-thumb-bg: var(--term-bg, #0d1117);
+
+  /* Nav bar */
+  --nav-bg: rgba(13, 17, 23, 0.98);
+  --nav-backdrop: none;
+  --nav-border: 1px solid var(--term-green, #00ff41);
+  --nav-logo-color: var(--term-green, #00ff41);
+  --nav-logo-font: 'JetBrains Mono', monospace;
+  --nav-logo-icon-color: var(--term-green, #00ff41);
+  --nav-link-color: var(--term-green, #00ff41);
+  --nav-link-hover-color: var(--term-green-light, #66ff88);
+  --nav-cta-bg: var(--term-green, #00ff41);
+  --nav-cta-color: var(--term-bg, #0d1117);
+  --nav-cta-hover-bg: var(--term-green-light, #66ff88);
+  --nav-cta-radius: 0;
+  --nav-hamburger-color: var(--term-green, #00ff41);
+  --nav-mobile-bg: var(--term-bg, #0d1117);
+
+  /* Footer */
+  --footer-bg: var(--term-bg, #0d1117);
+  --footer-logo-color: var(--term-green, #00ff41);
+  --footer-logo-font: 'JetBrains Mono', monospace;
+  --footer-logo-icon-color: var(--term-green, #00ff41);
+  --footer-tagline-color: var(--term-text-secondary, #8b949e);
+  --footer-location-color: var(--term-text-secondary, #8b949e);
+  --footer-badge-bg: rgba(0, 255, 65, 0.15);
+  --footer-badge-color: var(--term-green, #00ff41);
+  --footer-badge-radius: 0;
+  --footer-divider: 1px solid var(--term-border, #1a3a1a);
+  --footer-copyright-color: var(--term-text-muted, #484f58);
+  --footer-accent-height: 0;
+}
+
+/* In terminal mode, dark-context uses standard terminal tokens */
+body.terminal-mode .dark-context {
+  --section-header-title-color: var(--term-green, #00ff41);
+  --section-header-subtitle-color: var(--term-text-secondary, #8b949e);
+  --card-bg: var(--term-bg-card, #161b22);
+  --card-border: 1px solid var(--term-border, #1a3a1a);
+  --card-hover-bg: var(--term-bg-hover, #1c2333);
+  --card-hover-border-color: var(--term-green, #00ff41);
+  --card-icon-color: var(--term-accent-light, #C4A8E0);
+  --card-title-color: var(--term-green, #00ff41);
+  --card-description-color: var(--term-text-secondary, #8b949e);
+  --card-badge-color: var(--term-green, #00ff41);
+  --card-badge-opacity: 1;
+}
