@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "build": "tsup && npm run copy-css",
-    "copy-css": "cp -r src/themes dist/themes && cp -r src/styles dist/styles",
+    "copy-css": "mkdir -p dist/themes dist/styles && cp src/themes/*.css dist/themes/ && cp src/styles/*.css dist/styles/",
     "dev": "vite",
     "lint": "tsc --noEmit",
     "prepare": "npm run build",
