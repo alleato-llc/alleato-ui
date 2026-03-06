@@ -67,11 +67,19 @@ Page section wrapper with container and optional auto-generated header.
 | Property | Default | Description |
 |----------|---------|-------------|
 | `--section-padding` | `6rem` | Vertical padding |
-| `--section-bg` | `transparent` | Background |
+| `--section-bg` | `transparent` | Background (set this to a `--section-bg-*` token) |
 | `--section-color` | `inherit` | Text color |
 | `--container-width` | `1200px` | Max container width |
+| `--section-bg-default` | `var(--color-white)` | Semantic token: default section background |
+| `--section-bg-alt` | `var(--color-light)` | Semantic token: alternate section background |
+| `--section-bg-emphasis` | gradient | Semantic token: emphasis/dark section background |
 
 **Behavior:** Automatically sets `data-animate` attribute for scroll animations.
+
+**Usage:** Set `--section-bg` to a semantic token so themes control the actual color:
+```css
+.my-section { --section-bg: var(--section-bg-default); }
+```
 
 ---
 

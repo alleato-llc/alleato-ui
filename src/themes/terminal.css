@@ -40,6 +40,9 @@ body.terminal-mode {
 
   /* Section */
   --section-bg: var(--term-bg, #0d1117);
+  --section-bg-default: var(--term-bg, #0d1117);
+  --section-bg-alt: var(--term-bg, #0d1117);
+  --section-bg-emphasis: var(--term-bg, #0d1117);
   --section-header-title-color: var(--term-green, #00ff41);
   --section-header-subtitle-color: var(--term-text-secondary, #8b949e);
 
