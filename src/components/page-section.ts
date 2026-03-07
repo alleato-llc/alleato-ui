@@ -5,6 +5,7 @@ const STYLES = `
     padding: var(--section-padding, var(--spacing-section, 6rem)) 0;
     background: var(--section-bg, transparent);
     color: var(--section-color, inherit);
+    box-sizing: border-box;
   }
 
   .container {

@@ -1,5 +1,10 @@
 /* Terminal theme token overrides */
 body.terminal-mode {
+  /* Font overrides — needed for Shadow DOM inheritance */
+  --font-heading: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-body: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
   /* Card */
   --card-bg: var(--term-bg-card, #161b22);
   --card-bg-alt: var(--term-bg-card, #161b22);
@@ -115,6 +120,7 @@ body.terminal-mode {
   --nav-logo-icon-color: var(--term-green, #00ff41);
   --nav-link-color: var(--term-green, #00ff41);
   --nav-link-hover-color: var(--term-green-light, #66ff88);
+  --nav-link-font: 'JetBrains Mono', 'Fira Code', monospace;
   --nav-cta-bg: var(--term-green, #00ff41);
   --nav-cta-color: var(--term-bg, #0d1117);
   --nav-cta-hover-bg: var(--term-green-light, #66ff88);

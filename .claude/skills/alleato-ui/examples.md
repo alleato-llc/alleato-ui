@@ -182,6 +182,23 @@ import '@alleato/ui/styles/animations.css';
 </script>
 ```
 
+## CSS Reset Compatibility
+
+Global CSS resets like `* { margin: 0; padding: 0; }` override Shadow DOM `:host` padding/margin because external styles on the host element beat `:host` styles in the CSS cascade. Scope resets to standard HTML elements only:
+
+```css
+/* DO: scope to HTML elements */
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, div, span,
+body, section, article, nav, header, footer,
+a, img, form, input, textarea, select, button, label {
+  margin: 0;
+  padding: 0;
+}
+
+/* DON'T: reset all elements (breaks web components) */
+* { margin: 0; padding: 0; }
+```
+
 ## Dark Context (for dark backgrounds)
 
 ```html

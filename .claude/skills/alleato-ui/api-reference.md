@@ -121,6 +121,7 @@ interface NavItem {
 | `--nav-logo-color` | `inherit` | Logo text color |
 | `--nav-logo-font` | `var(--font-heading)` | Logo font |
 | `--nav-link-color` | `inherit` | Link color |
+| `--nav-link-font` | `inherit` | Link font family |
 | `--nav-link-hover-color` | `inherit` | Link hover color |
 | `--nav-cta-bg` | `#6C3BAA` | CTA background |
 | `--nav-cta-color` | `white` | CTA text color |

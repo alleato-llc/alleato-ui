@@ -98,7 +98,13 @@
   --section-bg-alt: var(--color-light, #f8f7f4);
   --section-bg-emphasis: var(--gradient-mesopotamian, linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%));
 
+  /* Nav bar */
+  --nav-logo-color: var(--color-black, #3A3530);
+  --nav-logo-icon-color: var(--color-primary, #6C3BAA);
+  --nav-link-color: var(--color-dark, #5C544A);
+
   /* Footer */
+  --footer-bg: var(--color-black, #3A3530);
   --footer-accent-bg: var(--gradient-accent, linear-gradient(135deg, #C4A8E0, #E8C4A0));
 }
 

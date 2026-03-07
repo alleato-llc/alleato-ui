@@ -16,10 +16,12 @@ const STYLES = `
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     height: var(--nav-height, 72px);
     max-width: var(--container-width, 1200px);
     margin: 0 auto;
     padding: 0 2rem;
+    box-sizing: border-box;
   }
 
   .logo {
@@ -47,6 +49,7 @@ const STYLES = `
   .nav-link {
     font-size: 0.95rem;
     font-weight: 500;
+    font-family: var(--nav-link-font, inherit);
     color: var(--nav-link-color, inherit);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -67,15 +70,6 @@ const STYLES = `
   .nav-link[data-cta]:hover {
     background: var(--nav-cta-hover-bg, #553090);
     transform: translateY(-1px);
-  }
-
-  .toggle-area {
-    display: flex;
-    align-items: center;
-  }
-
-  .toggle-area:empty {
-    display: none;
   }
 
   .hamburger-btn {
@@ -173,8 +167,7 @@ const STYLES = `
 const TEMPLATE = `
   <div class="nav-inner">
     <a class="logo" href="/"></a>
-    <nav></nav>
-    <div class="toggle-area"><slot name="toggle"></slot></div>
+    <nav><slot name="toggle"></slot></nav>
     <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
       <span class="hamburger-line"></span>
     </button>
@@ -253,9 +246,18 @@ export class NavBar extends HTMLElement {
 
   private renderItems() {
     const nav = this.shadowRoot!.querySelector('nav')!;
-    nav.innerHTML = this._items.map(item =>
+    // Preserve the existing toggle slot
+    const slot = nav.querySelector('slot[name="toggle"]');
+    const links = this._items.map(item =>
       `<a class="nav-link" href="${item.href}"${item.cta ? ' data-cta' : ''}>${item.label}</a>`
-    ).join('') + '<slot name="toggle"></slot>';
+    ).join('');
+    // Build: links first, then the toggle slot
+    nav.innerHTML = links;
+    if (slot) {
+      nav.appendChild(slot);
+    } else {
+      nav.insertAdjacentHTML('beforeend', '<slot name="toggle"></slot>');
+    }
   }
 }
 

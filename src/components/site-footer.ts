@@ -37,7 +37,6 @@ const STYLES = `
   .tagline {
     color: var(--footer-tagline-color, #999);
     font-size: 0.95rem;
-    margin: 0;
   }
 
   .tagline:empty {
@@ -76,7 +75,6 @@ const STYLES = `
   .copyright {
     font-size: 0.85rem;
     color: var(--footer-copyright-color, #999);
-    margin: 0;
   }
 
   .accent-bar {
