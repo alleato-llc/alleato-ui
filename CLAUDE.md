@@ -28,10 +28,12 @@ demo/
 
 ## Architecture
 
-- **CardBase** (`card-base.ts`): Base class for card components. Provides shared Shadow DOM styles (`:host`, `.icon-area`, `.card-title`, `.card-description`).
-- **Card hierarchy**: `ServiceCard`, `ApproachCard`, `ShowcaseCard` all extend `CardBase`.
+See **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** for the full architecture reference, including component catalog, theme system, build pipeline, assumptions, tradeoffs, and maintenance guides.
+
+Key points:
+- **CardBase** (`card-base.ts`): Base class for card components. `ServiceCard`, `ApproachCard`, `ShowcaseCard` extend it.
 - **Standalone components**: `AlleatoIcon`, `SectionHeader`, `PageSection`, `NavBar`, `SiteFooter`, `FormField`, `FormContainer`, `TerminalWindow`, `TerminalIntro`, `TerminalEmbed`, `ThemePicker`.
-- **`TerminalEmbed`**: Shadow DOM container for xterm.js with ResizeObserver. Emits `terminal-resize` events. Has NO xterm dependency — consumer opens terminal into the element's light DOM (not `embed.container`) so globally-loaded `xterm.css` can style it.
+- **`TerminalEmbed`**: Shadow DOM container for xterm.js with ResizeObserver. Has NO xterm dependency — consumer opens terminal into the element's light DOM (not `embed.container`) so globally-loaded `xterm.css` can style it.
 - Every component has a `register()` function that calls `customElements.define()` with a guard.
 - `index.ts` exports all classes + individual `register` functions + `registerAll()`.
 
