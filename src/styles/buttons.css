@@ -1,4 +1,4 @@
-/* Shared button styles */
+/* Shared button styles — theme-agnostic via CSS custom properties */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -6,57 +6,31 @@
   padding: 0.875rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: var(--radius-medium);
+  font-family: var(--btn-font, inherit);
+  border-radius: var(--btn-radius, var(--radius-medium));
   transition: all var(--transition-fast);
   border: none;
   cursor: pointer;
 }
 
 .btn-primary {
-  background: var(--gradient-accent);
-  color: var(--color-black);
-  box-shadow: var(--shadow-medium), var(--shadow-glow);
+  background: var(--btn-primary-bg, var(--gradient-accent));
+  color: var(--btn-primary-color, var(--color-black));
+  box-shadow: var(--btn-primary-shadow, var(--shadow-medium), var(--shadow-glow));
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-strong), 0 0 30px rgba(255, 232, 208, 0.4);
+  transform: var(--btn-primary-hover-transform, translateY(-2px));
+  box-shadow: var(--btn-primary-hover-shadow, var(--shadow-strong), 0 0 30px rgba(255, 232, 208, 0.4));
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--color-white);
-  border: 2px solid rgba(255, 252, 246, 0.3);
+  color: var(--btn-secondary-color, var(--color-white));
+  border: var(--btn-secondary-border, 2px solid rgba(255, 252, 246, 0.3));
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 252, 246, 0.1);
-  border-color: rgba(255, 252, 246, 0.5);
-}
-
-/* Terminal mode button overrides */
-body.terminal-mode .btn-primary {
-  background: var(--term-green);
-  color: var(--term-bg);
-  border-radius: 0;
-  box-shadow: none;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-body.terminal-mode .btn-primary:hover {
-  background: var(--term-green-light);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-  transform: none;
-}
-
-body.terminal-mode .btn-secondary {
-  border: 1px solid var(--term-green);
-  color: var(--term-green);
-  border-radius: 0;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-body.terminal-mode .btn-secondary:hover {
-  background: rgba(0, 255, 65, 0.1);
-  border-color: var(--term-green-light);
+  background: var(--btn-secondary-hover-bg, rgba(255, 252, 246, 0.1));
+  border-color: var(--btn-secondary-hover-border-color, rgba(255, 252, 246, 0.5));
 }

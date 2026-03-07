@@ -17,9 +17,9 @@ npm run lint     # TypeScript type checking
 
 ```
 src/
-  components/     # Web Components (11 files)
+  components/     # Web Components (16 files)
   styles/         # Shared CSS (buttons, animations)
-  themes/         # Theme CSS (default, terminal)
+  themes/         # Theme CSS (_base, default, terminal, 3 newspaper themes)
   index.ts        # Barrel export + registerAll()
 demo/
   index.html      # Showcase page
@@ -30,17 +30,22 @@ demo/
 
 - **CardBase** (`card-base.ts`): Base class for card components. Provides shared Shadow DOM styles (`:host`, `.icon-area`, `.card-title`, `.card-description`).
 - **Card hierarchy**: `ServiceCard`, `ApproachCard`, `ShowcaseCard` all extend `CardBase`.
-- **Standalone components**: `AlleatoIcon`, `SectionHeader`, `PageSection`, `NavBar`, `SiteFooter`, `FormField`, `FormContainer`.
+- **Standalone components**: `AlleatoIcon`, `SectionHeader`, `PageSection`, `NavBar`, `SiteFooter`, `FormField`, `FormContainer`, `TerminalWindow`, `TerminalIntro`, `TerminalEmbed`, `ThemePicker`.
+- **`TerminalEmbed`**: Shadow DOM container for xterm.js with ResizeObserver. Emits `terminal-resize` events. Has NO xterm dependency — consumer opens terminal into the element's light DOM (not `embed.container`) so globally-loaded `xterm.css` can style it.
 - Every component has a `register()` function that calls `customElements.define()` with a guard.
 - `index.ts` exports all classes + individual `register` functions + `registerAll()`.
 
 ## Theme System
 
-Two CSS files define token values consumed by components:
-- `themes/default.css`: `:root` token definitions (cards, form, nav, footer, content)
-- `themes/terminal.css`: `body.terminal-mode` overrides using `--term-*` variables
+Three-layer CSS variable system:
+- **`themes/_base.css`**: Maps Layer 1 primitives (`--theme-*`) to Layer 2 component tokens on `body`. Always import first.
+- **`themes/default.css`**: Layer 1 primitives on `:root` + Layer 2 overrides for hero, nav, footer, etc.
+- **`themes/terminal.css`**: Terminal theme on `body[data-theme="terminal"]`
+- **`themes/newspaper-*.css`**: Three newspaper themes (broadsheet, tabloid, gazette)
 
 Components reference tokens like `var(--card-bg, #f8f7f4)` with fallbacks, so they work without any theme imported.
+
+**Important**: `_base.css` uses `body` selector which is more specific than `:root`. Don't auto-map tokens in `_base.css` if individual themes need different values (e.g. `--hero-headline-color` is set per-theme because the hero has a dark background in the default theme).
 
 ## Adding a New Component
 
@@ -62,4 +67,4 @@ Edit the `STYLES` const in the component file. Use CSS custom properties with fa
 Add an entry to the `ICONS` record in `src/components/alleato-icon.ts`.
 
 ### Adding theme tokens
-Add to `:root` in `themes/default.css` and `body.terminal-mode` in `themes/terminal.css`.
+Add to `:root` in `themes/default.css` and `body[data-theme="terminal"]` in `themes/terminal.css`. If the token should auto-map from a Layer 1 primitive, add the mapping in `themes/_base.css`.

@@ -1,7 +1,7 @@
 const STYLES = `
   :host {
     display: block;
-    text-align: center;
+    text-align: var(--sh-text-align, center);
     max-width: var(--section-header-max-width, 700px);
     margin: 0 auto var(--section-header-margin-bottom, 4rem);
   }

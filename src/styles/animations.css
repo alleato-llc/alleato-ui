@@ -1,26 +1,15 @@
-/* Scroll-triggered animations */
+/* Scroll-triggered animations — theme-agnostic via CSS custom properties */
 
-/* Default theme: fade-up */
 [data-animate] {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: var(--animate-initial-transform, translateY(20px));
+  transition: var(--animate-transition, opacity 0.6s ease, transform 0.6s ease);
 }
 
 [data-animate].animate-visible {
   opacity: 1;
-  transform: translateY(0);
-}
-
-/* Terminal mode: boot-flicker */
-body.terminal-mode [data-animate] {
-  opacity: 0;
-  transform: none;
-  transition: none;
-}
-
-body.terminal-mode [data-animate].animate-visible {
-  animation: boot-flicker 0.4s ease forwards;
+  transform: var(--animate-visible-transform, translateY(0));
+  animation: var(--animate-visible-animation, none);
 }
 
 @keyframes boot-flicker {
@@ -40,7 +29,7 @@ body.terminal-mode [data-animate].animate-visible {
     transition: none;
   }
 
-  body.terminal-mode [data-animate].animate-visible {
+  [data-animate].animate-visible {
     animation: none;
     opacity: 1;
   }

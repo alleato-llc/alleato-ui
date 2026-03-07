@@ -2,7 +2,7 @@
 
 ## `registerAll()`
 
-Registers all 10 custom elements. Uses dynamic imports for lazy loading.
+Registers all 12 custom elements. Uses dynamic imports for lazy loading.
 
 ```ts
 import { registerAll } from '@alleato/ui';
@@ -291,6 +291,104 @@ Form wrapper that handles validation and submission.
 | `--form-radius` | `12px` | Border radius |
 | `--form-submit-bg` | gradient | Submit button background |
 | `--form-submit-color` | `#1a1a1a` | Submit button text |
+
+---
+
+## `<alleato-terminal-window>`
+
+Terminal window chrome wrapper. Hidden pass-through by default, activated via `active` attribute.
+
+**Attributes:**
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `title` | `string` | Command text in titlebar |
+| `active` | `boolean` | Show window chrome (without this, component is transparent) |
+| `closable` | `string` | `"false"` to hide red dot (default: shown) |
+| `minimizable` | `string` | `"false"` to hide yellow dot (default: shown) |
+| `maximizable` | `string` | `"false"` to hide green dot (default: shown) |
+| `closed` | `boolean` | Hides the window |
+| `minimized` | `boolean` | Collapses to titlebar only |
+| `maximized` | `boolean` | Fullscreen overlay |
+
+**Methods:**
+| Method | Description |
+|--------|-------------|
+| `close()` | Hides window, dispatches `terminal-close` |
+| `minimize()` | Collapses to titlebar, dispatches `terminal-minimize` |
+| `maximize()` | Fullscreen overlay, dispatches `terminal-maximize` |
+| `restore()` | Removes closed/minimized/maximized, dispatches `terminal-restore` |
+
+**Events:**
+| Event | Description |
+|-------|-------------|
+| `terminal-close` | Window was closed |
+| `terminal-minimize` | Window was minimized |
+| `terminal-maximize` | Window was maximized |
+| `terminal-restore` | Window was restored from any state |
+
+**CSS Custom Properties:**
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--tw-bg` | `#0d1117` | Window background |
+| `--tw-titlebar-bg` | `#161b22` | Titlebar background |
+| `--tw-titlebar-border` | `1px solid #1a3a1a` | Titlebar bottom border |
+| `--tw-title-color` | `#8b949e` | Title text color |
+| `--tw-title-font` | `'JetBrains Mono', monospace` | Title font |
+| `--tw-border` | `1px solid #1a3a1a` | Window border |
+| `--tw-border-radius` | `8px 8px 0 0` | Window border radius |
+| `--tw-margin` | `1.5rem 1rem` | Window margin |
+| `--tw-margin-mobile` | `0.75rem 0.5rem` | Mobile margin |
+| `--tw-dot-size` | `12px` | Dot diameter |
+
+---
+
+## `<alleato-terminal-intro>`
+
+Modal dialog for introducing terminal mode with focus trap and localStorage persistence.
+
+**Attributes:**
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `open` | `boolean` | Show/hide dialog |
+| `command` | `string` | Titlebar command text |
+| `storage-key` | `string` | localStorage key for "seen" state |
+| `confirm-text` | `string` | Confirm button label (default: "Confirm") |
+| `cancel-text` | `string` | Cancel button label (default: "Cancel") |
+
+**JS Properties:**
+| Property | Type | Description |
+|----------|------|-------------|
+| `seen` | `boolean` (readonly) | Whether intro was previously confirmed (via storage-key) |
+
+**Methods:**
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `prompt()` | `Promise<boolean>` | Shows dialog (or auto-confirms if seen). Resolves true/false. |
+
+**Events:**
+| Event | Description |
+|-------|-------------|
+| `confirm` | User confirmed |
+| `cancel` | User cancelled (or pressed Escape) |
+
+**Slots:** Default slot for dialog body content.
+
+**CSS Custom Properties:**
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--ti-overlay-bg` | `rgba(58, 53, 48, 0.5)` | Overlay background |
+| `--ti-dialog-bg` | `#fffcf6` | Dialog background |
+| `--ti-dialog-border` | `1px solid #e8e4df` | Dialog border |
+| `--ti-dialog-radius` | `12px` | Dialog border radius |
+| `--ti-dialog-shadow` | shadow | Dialog box shadow |
+| `--ti-titlebar-bg` | `#f8f7f4` | Titlebar background |
+| `--ti-titlebar-border` | `1px solid #e8e4df` | Titlebar border |
+| `--ti-titlebar-color` | `#999` | Titlebar text color |
+| `--ti-title-font` | `'JetBrains Mono', monospace` | Titlebar font |
+| `--ti-body-color` | `#333` | Body text color |
+| `--ti-confirm-bg` | `#6C3BAA` | Confirm button background |
+| `--ti-confirm-color` | `#fffcf6` | Confirm button text |
+| `--ti-btn-radius` | `8px` | Button border radius |
 
 ---
 

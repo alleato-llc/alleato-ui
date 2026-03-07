@@ -34,18 +34,6 @@
         --transition-normal: 0.3s ease;
         --container-width: 1200px;
 
-        /* Terminal mode variables (used when body.terminal-mode is active) */
-        --term-green: #00ff41;
-        --term-green-light: #66ff88;
-        --term-bg: #0d1117;
-        --term-bg-card: #161b22;
-        --term-border: #1a3a1a;
-        --term-text-secondary: #8b949e;
-        --term-text-body: #c9d1d9;
-        --term-text-muted: #484f58;
-        --term-accent: #8A5CC4;
-        --term-accent-light: #C4A8E0;
-        --term-bg-hover: #1c2333;
       }
 
       body {
@@ -53,11 +41,20 @@
         color: var(--color-dark);
         background: var(--color-white);
         margin: 0;
+        padding-top: 72px;
       }
 
       .demo-section {
         padding: 2rem;
         border-bottom: 1px solid var(--color-medium);
+      }
+
+      body[data-theme] .demo-section {
+        border-bottom-color: var(--theme-border, var(--color-medium));
+      }
+
+      body[data-theme] .demo-section h2 {
+        color: var(--theme-fg-primary, var(--color-black));
       }
 
       .demo-section h2 {
@@ -100,9 +97,6 @@
       }
 
       .theme-toggle-btn {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
         padding: 0.75rem 1.5rem;
         background: var(--color-primary);
         color: white;
@@ -110,25 +104,27 @@
         border-radius: var(--radius-medium);
         cursor: pointer;
         font-weight: 600;
-        z-index: 1000;
       }
 
-      body.terminal-mode .theme-toggle-btn {
-        background: var(--term-green);
-        color: var(--term-bg);
-        border-radius: 0;
+      .demo-theme-picker-wrap {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 1000;
       }
     </style>
     <script type="module" src="./main.ts"></script>
   </head>
   <body>
-    <button class="theme-toggle-btn" id="theme-toggle">Toggle Terminal Mode</button>
+    <div class="demo-theme-picker-wrap">
+      <alleato-theme-picker id="demo-theme-picker" storage-key="alleato-demo-theme"></alleato-theme-picker>
+    </div>
 
     <!-- NavBar -->
     <alleato-nav-bar id="demo-nav" brand="Alleato" logo="logo"></alleato-nav-bar>
 
     <!-- Icons -->
-    <div class="demo-section">
+    <div id="icons" class="demo-section">
       <h2>Icons</h2>
       <div class="icon-grid">
         <div class="icon-item"><alleato-icon name="app"></alleato-icon><span>app</span></div>
@@ -144,6 +140,10 @@
         <div class="icon-item"><alleato-icon name="blog"></alleato-icon><span>blog</span></div>
         <div class="icon-item"><alleato-icon name="arrow"></alleato-icon><span>arrow</span></div>
         <div class="icon-item"><alleato-icon name="logo"></alleato-icon><span>logo</span></div>
+        <div class="icon-item"><alleato-icon name="terminal"></alleato-icon><span>terminal</span></div>
+        <div class="icon-item"><alleato-icon name="gear"></alleato-icon><span>gear</span></div>
+        <div class="icon-item"><alleato-icon name="sun"></alleato-icon><span>sun</span></div>
+        <div class="icon-item"><alleato-icon name="newspaper"></alleato-icon><span>newspaper</span></div>
       </div>
     </div>
 
@@ -159,7 +159,7 @@
     </alleato-page-section>
 
     <!-- Service Cards -->
-    <div class="demo-section">
+    <div id="cards" class="demo-section">
       <h2>Service Cards</h2>
       <div class="card-grid">
         <alleato-service-card
@@ -229,13 +229,57 @@
     </div>
 
     <!-- Form -->
-    <div class="demo-section">
+    <div id="form" class="demo-section">
       <h2>Form</h2>
       <alleato-form-container id="demo-form" submit-text="Send Message" success-message="Message sent!">
         <alleato-form-field slot="row" label="Name" name="name" placeholder="Your name" required></alleato-form-field>
         <alleato-form-field slot="row" label="Email" name="email" type="email" placeholder="you@example.com" required></alleato-form-field>
         <alleato-form-field label="Message" name="message" type="textarea" placeholder="Your message..." required></alleato-form-field>
       </alleato-form-container>
+    </div>
+
+    <!-- Terminal Window -->
+    <div class="demo-section">
+      <h2>Terminal Window</h2>
+      <alleato-terminal-window id="demo-terminal-window" title="user@host:~$ ls" active>
+        <div style="padding: 1.5rem;">
+          <p>This content is wrapped in a terminal window. Try the dots!</p>
+          <p>Red = close, Yellow = minimize, Green = maximize.</p>
+        </div>
+      </alleato-terminal-window>
+      <div style="margin-top: 1rem;">
+        <button class="theme-toggle-btn" id="restore-window" style="position: static; margin: 0;">Restore Window</button>
+      </div>
+    </div>
+
+    <!-- Terminal Window (inactive) -->
+    <div class="demo-section">
+      <h2>Terminal Window (inactive pass-through)</h2>
+      <alleato-terminal-window title="not shown because no active attribute">
+        <div style="padding: 1.5rem; border: 1px dashed var(--color-medium);">
+          <p>This terminal window has no <code>active</code> attribute, so it's a transparent wrapper.</p>
+        </div>
+      </alleato-terminal-window>
+    </div>
+
+    <!-- Terminal Intro Dialog -->
+    <div class="demo-section">
+      <h2>Terminal Intro Dialog</h2>
+      <button class="theme-toggle-btn" id="show-intro" style="position: static; margin: 0;">Show Intro Dialog</button>
+      <alleato-terminal-intro
+        id="demo-intro"
+        command="alleato@dev:~$ man terminal-mode"
+        confirm-text="Enter Terminal Mode"
+        cancel-text="Cancel"
+      >
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.3rem;">Terminal Mode</h3>
+        <p style="margin-bottom: 1rem;">You're about to switch to a retro terminal experience.</p>
+        <ul style="list-style: none; padding: 0; margin-bottom: 1rem;">
+          <li style="padding: 0.4rem 0;">The site transforms into a terminal interface</li>
+          <li style="padding: 0.4rem 0;">Each section becomes a terminal window</li>
+          <li style="padding: 0.4rem 0;">Window controls are functional (close, minimize, maximize)</li>
+        </ul>
+      </alleato-terminal-intro>
     </div>
 
     <!-- Footer -->

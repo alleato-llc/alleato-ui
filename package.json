@@ -15,8 +15,12 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./themes/base.css": "./dist/themes/_base.css",
     "./themes/default.css": "./dist/themes/default.css",
     "./themes/terminal.css": "./dist/themes/terminal.css",
+    "./themes/newspaper-broadsheet.css": "./dist/themes/newspaper-broadsheet.css",
+    "./themes/newspaper-tabloid.css": "./dist/themes/newspaper-tabloid.css",
+    "./themes/newspaper-gazette.css": "./dist/themes/newspaper-gazette.css",
     "./styles/buttons.css": "./dist/styles/buttons.css",
     "./styles/animations.css": "./dist/styles/animations.css",
     "./components/*": {

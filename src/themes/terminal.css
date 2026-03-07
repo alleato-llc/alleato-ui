@@ -1,86 +1,115 @@
-/* Terminal theme token overrides */
-body.terminal-mode {
+/* Terminal theme */
+body.terminal-mode,
+body[data-theme="terminal"] {
+  /* Terminal raw color primitives */
+  --term-green: #00ff41;
+  --term-green-light: #66ff88;
+  --term-bg: #0d1117;
+  --term-bg-card: #161b22;
+  --term-border: #1a3a1a;
+  --term-text-secondary: #8b949e;
+  --term-text-body: #c9d1d9;
+  --term-text-muted: #484f58;
+  --term-accent: #8A5CC4;
+  --term-accent-light: #C4A8E0;
+  --term-bg-hover: #1c2333;
+
+  /* Layer 1 — Theme primitives */
+  --theme-bg: var(--term-bg);
+  --theme-bg-surface: var(--term-bg-card);
+  --theme-bg-elevated: var(--term-bg-card);
+  --theme-fg-primary: var(--term-green);
+  --theme-fg-secondary: var(--term-text-body);
+  --theme-fg-muted: var(--term-text-secondary);
+  --theme-accent: var(--term-accent);
+  --theme-accent-light: var(--term-accent-light);
+  --theme-accent-hover: var(--term-green-light);
+  --theme-border: var(--term-border);
+  --theme-border-strong: var(--term-green);
+  --theme-radius: 0;
+  --theme-radius-small: 0;
+  --theme-shadow-medium: none;
+  --theme-shadow-strong: none;
+  --theme-hover-transform: none;
+  --theme-overlay-content: '';
+  --theme-overlay-bg: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  --theme-overlay-opacity: 1;
+
   /* Font overrides — needed for Shadow DOM inheritance */
   --font-heading: 'JetBrains Mono', 'Fira Code', monospace;
   --font-body: 'JetBrains Mono', 'Fira Code', monospace;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Card */
-  --card-bg: var(--term-bg-card, #161b22);
-  --card-bg-alt: var(--term-bg-card, #161b22);
-  --card-border: 1px solid var(--term-border, #1a3a1a);
-  --card-radius: 0;
+  /* Button tokens */
+  --btn-primary-bg: var(--term-green);
+  --btn-primary-color: var(--term-bg);
+  --btn-radius: 0;
+  --btn-primary-shadow: none;
+  --btn-font: 'JetBrains Mono', monospace;
+  --btn-primary-hover-transform: none;
+  --btn-primary-hover-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  --btn-secondary-color: var(--term-green);
+  --btn-secondary-border: 1px solid var(--term-green);
+  --btn-secondary-hover-bg: rgba(0, 255, 65, 0.1);
+  --btn-secondary-hover-border-color: var(--term-green-light);
+
+  /* Animation tokens */
+  --animate-initial-transform: none;
+  --animate-transition: none;
+  --animate-visible-transform: none;
+  --animate-visible-animation: boot-flicker 0.4s ease forwards;
+
+  /* Layer 2/3 — Direct component overrides */
+
+  /* Card extras */
+  --card-bg-alt: var(--term-bg-card);
   --card-padding: 1.5rem;
 
   /* Card hover */
-  --card-hover-transform: none;
   --card-hover-shadow: 0 0 10px rgba(0, 255, 65, 0.15);
-  --card-hover-border-color: var(--term-green, #00ff41);
-  --card-hover-bg: var(--term-bg-hover, #1c2333);
+  --card-hover-border-color: var(--term-green);
+  --card-hover-bg: var(--term-bg-hover);
 
   /* Card accent bar */
-  --card-accent-color: var(--term-green, #00ff41);
+  --card-accent-color: var(--term-green);
 
   /* Card icon */
-  --card-icon-bg: var(--term-border, #1a3a1a);
-  --card-icon-color: var(--term-green, #00ff41);
-  --card-icon-radius: 0;
-
-  /* Card content */
-  --card-title-color: var(--term-green, #00ff41);
-  --card-description-color: var(--term-text-secondary, #8b949e);
+  --card-icon-bg: var(--term-border);
+  --card-icon-color: var(--term-green);
 
   /* Service card */
-  --card-highlight-color: var(--term-text-body, #c9d1d9);
-  --card-highlight-dot: var(--term-green, #00ff41);
+  --card-highlight-dot: var(--term-green);
   --card-highlight-dot-radius: 0;
 
   /* Approach card */
-  --card-badge-color: var(--term-green, #00ff41);
+  --card-badge-color: var(--term-green);
   --card-badge-opacity: 1;
 
   /* Showcase card */
-  --card-type-color: var(--term-accent, #8A5CC4);
-  --card-arrow-color: var(--term-green, #00ff41);
+  --card-arrow-color: var(--term-green);
 
   /* Section */
-  --section-bg: var(--term-bg, #0d1117);
-  --section-bg-default: var(--term-bg, #0d1117);
-  --section-bg-alt: var(--term-bg, #0d1117);
-  --section-bg-emphasis: var(--term-bg, #0d1117);
-  --section-header-title-color: var(--term-green, #00ff41);
-  --section-header-subtitle-color: var(--term-text-secondary, #8b949e);
-
-  /* Content elements */
-  --content-heading-color: var(--term-green, #00ff41);
-  --content-body-color: var(--term-text-body, #c9d1d9);
-  --content-muted-color: var(--term-text-secondary, #8b949e);
-  --content-label-color: var(--term-accent, #8A5CC4);
-  --content-border-color: var(--term-border, #1a3a1a);
-  --content-panel-bg: var(--term-bg-card, #161b22);
-  --content-panel-radius: 0;
+  --section-bg-alt: var(--term-bg);
+  --section-bg-emphasis: var(--term-bg);
 
   /* Form */
-  --form-bg: var(--term-bg-card, #161b22);
-  --form-border: 1px solid var(--term-border, #1a3a1a);
-  --form-radius: 0;
-  --form-label-color: var(--term-green, #00ff41);
+  --form-bg: var(--term-bg-card);
   --form-label-font: 'JetBrains Mono', monospace;
-  --form-input-bg: var(--term-bg, #0d1117);
-  --form-input-border: 1px solid var(--term-border, #1a3a1a);
-  --form-input-color: var(--term-text-body, #c9d1d9);
-  --form-input-radius: 0;
   --form-input-font: 'JetBrains Mono', monospace;
-  --form-focus-border-color: var(--term-green, #00ff41);
+  --form-focus-border-color: var(--term-green);
   --form-focus-shadow: 0 0 0 2px rgba(0, 255, 65, 0.15);
-  --form-placeholder-color: var(--term-text-muted, #484f58);
   --form-shadow: none;
   --form-padding: 2.5rem;
   --form-success-bg: rgba(0, 255, 65, 0.1);
-  --form-success-color: var(--term-green, #00ff41);
-  --form-submit-bg: var(--term-green, #00ff41);
-  --form-submit-color: var(--term-bg, #0d1117);
-  --form-submit-radius: 0;
+  --form-success-color: var(--term-green);
+  --form-submit-bg: var(--term-green);
+  --form-submit-color: var(--term-bg);
   --form-submit-font: 'JetBrains Mono', monospace;
   --form-submit-shadow: none;
   --form-submit-hover-transform: none;
@@ -88,72 +117,112 @@ body.terminal-mode {
 
   /* Phone button */
   --phone-bg: transparent;
-  --phone-color: var(--term-green, #00ff41);
-  --phone-border: 1px solid var(--term-green, #00ff41);
+  --phone-color: var(--term-green);
+  --phone-border: 1px solid var(--term-green);
   --phone-radius: 0;
   --phone-font: 'JetBrains Mono', monospace;
-  --phone-hover-bg: var(--term-green, #00ff41);
-  --phone-hover-color: var(--term-bg, #0d1117);
+  --phone-hover-bg: var(--term-green);
+  --phone-hover-color: var(--term-bg);
   --phone-hover-transform: none;
   --phone-hover-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
 
   /* Hero */
-  --hero-bg: var(--term-bg, #0d1117);
-  --hero-headline-color: var(--term-green, #00ff41);
-  --hero-accent-color: var(--term-accent-light, #C4A8E0);
-  --hero-subheadline-color: var(--term-text-secondary, #8b949e);
+  --hero-bg: var(--term-bg);
+  --hero-headline-color: var(--term-green);
+  --hero-accent-color: var(--term-accent-light);
+  --hero-subheadline-color: var(--term-text-secondary);
 
   /* Theme toggle */
-  --toggle-icon-color: var(--term-green, #00ff41);
-  --toggle-label-color: var(--term-green, #00ff41);
+  --toggle-icon-color: var(--term-green);
+  --toggle-label-color: var(--term-green);
   --toggle-label-font: 'JetBrains Mono', monospace;
-  --toggle-track-bg: var(--term-border, #1a3a1a);
-  --toggle-track-active-bg: var(--term-green, #00ff41);
-  --toggle-thumb-bg: var(--term-bg, #0d1117);
+  --toggle-track-bg: var(--term-border);
+  --toggle-track-active-bg: var(--term-green);
+  --toggle-thumb-bg: var(--term-bg);
 
   /* Nav bar */
   --nav-bg: rgba(13, 17, 23, 0.98);
   --nav-backdrop: none;
-  --nav-border: 1px solid var(--term-green, #00ff41);
-  --nav-logo-color: var(--term-green, #00ff41);
+  --nav-border: 1px solid var(--term-green);
+  --nav-logo-color: var(--term-green);
   --nav-logo-font: 'JetBrains Mono', monospace;
-  --nav-logo-icon-color: var(--term-green, #00ff41);
-  --nav-link-color: var(--term-green, #00ff41);
-  --nav-link-hover-color: var(--term-green-light, #66ff88);
+  --nav-logo-icon-color: var(--term-green);
+  --nav-link-color: var(--term-green);
+  --nav-link-hover-color: var(--term-green-light);
   --nav-link-font: 'JetBrains Mono', 'Fira Code', monospace;
-  --nav-cta-bg: var(--term-green, #00ff41);
-  --nav-cta-color: var(--term-bg, #0d1117);
-  --nav-cta-hover-bg: var(--term-green-light, #66ff88);
+  --nav-cta-bg: var(--term-green);
+  --nav-cta-color: var(--term-bg);
+  --nav-cta-hover-bg: var(--term-green-light);
   --nav-cta-radius: 0;
-  --nav-hamburger-color: var(--term-green, #00ff41);
-  --nav-mobile-bg: var(--term-bg, #0d1117);
+  --nav-hamburger-color: var(--term-green);
+  --nav-mobile-bg: var(--term-bg);
+
+  /* Terminal window chrome */
+  --tw-bg: var(--term-bg);
+  --tw-titlebar-bg: var(--term-bg-card);
+  --tw-titlebar-border: 1px solid var(--term-border);
+  --tw-title-color: var(--term-text-secondary);
+  --tw-title-font: 'JetBrains Mono', monospace;
+  --tw-border: 1px solid var(--term-border);
+  --tw-border-radius: 8px 8px 0 0;
+  --tw-margin: 1.5rem 1rem;
+  --tw-margin-mobile: 0.75rem 0.5rem;
+  --tw-dot-size: 12px;
+
+  /* Terminal intro dialog */
+  --ti-overlay-bg: rgba(13, 17, 23, 0.7);
+  --ti-dialog-bg: var(--term-bg-card);
+  --ti-dialog-border: 1px solid var(--term-border);
+  --ti-dialog-radius: 0;
+  --ti-dialog-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+  --ti-titlebar-bg: var(--term-bg);
+  --ti-titlebar-border: 1px solid var(--term-border);
+  --ti-titlebar-color: var(--term-text-secondary);
+  --ti-title-font: 'JetBrains Mono', monospace;
+  --ti-body-font: 'JetBrains Mono', monospace;
+  --ti-body-color: var(--term-text-body);
+  --ti-cancel-color: var(--term-text-secondary);
+  --ti-cancel-border: 1px solid var(--term-border);
+  --ti-cancel-hover-color: var(--term-text-body);
+  --ti-cancel-hover-border: var(--term-text-body);
+  --ti-confirm-bg: var(--term-green);
+  --ti-confirm-color: var(--term-bg);
+  --ti-confirm-hover-bg: var(--term-green-light);
+  --ti-btn-radius: 0;
 
   /* Footer */
-  --footer-bg: var(--term-bg, #0d1117);
-  --footer-logo-color: var(--term-green, #00ff41);
+  --footer-bg: var(--term-bg);
+  --footer-logo-color: var(--term-green);
   --footer-logo-font: 'JetBrains Mono', monospace;
-  --footer-logo-icon-color: var(--term-green, #00ff41);
-  --footer-tagline-color: var(--term-text-secondary, #8b949e);
-  --footer-location-color: var(--term-text-secondary, #8b949e);
+  --footer-logo-icon-color: var(--term-green);
+  --footer-tagline-color: var(--term-text-secondary);
+  --footer-location-color: var(--term-text-secondary);
   --footer-badge-bg: rgba(0, 255, 65, 0.15);
-  --footer-badge-color: var(--term-green, #00ff41);
+  --footer-badge-color: var(--term-green);
   --footer-badge-radius: 0;
-  --footer-divider: 1px solid var(--term-border, #1a3a1a);
-  --footer-copyright-color: var(--term-text-muted, #484f58);
+  --footer-divider: 1px solid var(--term-border);
+  --footer-copyright-color: var(--term-text-muted);
   --footer-accent-height: 0;
+
+  /* Theme picker (when in terminal mode) */
+  --picker-trigger-color: var(--term-green);
+  --picker-menu-bg: var(--term-bg-card);
+  --picker-menu-border: 1px solid var(--term-border);
+  --picker-option-hover-bg: var(--term-bg-hover);
 }
 
 /* In terminal mode, dark-context uses standard terminal tokens */
-body.terminal-mode .dark-context {
-  --section-header-title-color: var(--term-green, #00ff41);
-  --section-header-subtitle-color: var(--term-text-secondary, #8b949e);
-  --card-bg: var(--term-bg-card, #161b22);
-  --card-border: 1px solid var(--term-border, #1a3a1a);
-  --card-hover-bg: var(--term-bg-hover, #1c2333);
-  --card-hover-border-color: var(--term-green, #00ff41);
-  --card-icon-color: var(--term-accent-light, #C4A8E0);
-  --card-title-color: var(--term-green, #00ff41);
-  --card-description-color: var(--term-text-secondary, #8b949e);
-  --card-badge-color: var(--term-green, #00ff41);
+body.terminal-mode .dark-context,
+body[data-theme="terminal"] .dark-context {
+  --section-header-title-color: var(--term-green);
+  --section-header-subtitle-color: var(--term-text-secondary);
+  --card-bg: var(--term-bg-card);
+  --card-border: 1px solid var(--term-border);
+  --card-hover-bg: var(--term-bg-hover);
+  --card-hover-border-color: var(--term-green);
+  --card-icon-color: var(--term-accent-light);
+  --card-title-color: var(--term-green);
+  --card-description-color: var(--term-text-secondary);
+  --card-badge-color: var(--term-green);
   --card-badge-opacity: 1;
 }

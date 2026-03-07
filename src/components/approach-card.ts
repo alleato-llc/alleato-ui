@@ -2,10 +2,12 @@ import { CardBase } from './card-base';
 
 const STYLES = `
   .icon-area {
+    display: var(--card-icon-display, flex);
     background: var(--card-icon-bg, transparent);
   }
 
   .badge {
+    display: var(--card-badge-display, inline);
     position: absolute;
     top: var(--card-padding, 1.5rem);
     right: var(--card-padding, 1.5rem);

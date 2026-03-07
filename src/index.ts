@@ -9,6 +9,10 @@ export { ApproachCard, register as registerApproachCard } from './components/app
 export { ShowcaseCard, register as registerShowcaseCard } from './components/showcase-card';
 export { FormField, register as registerFormField } from './components/form-field';
 export { FormContainer, register as registerFormContainer } from './components/form-container';
+export { TerminalWindow, register as registerTerminalWindow } from './components/terminal-window';
+export { TerminalIntro, register as registerTerminalIntro } from './components/terminal-intro';
+export { ThemePicker, register as registerThemePicker } from './components/theme-picker';
+export type { ThemeDef } from './components/theme-picker';
 
 export function registerAll() {
   import('./components/alleato-icon').then(({ register }) => register());
@@ -21,4 +25,7 @@ export function registerAll() {
   import('./components/showcase-card').then(({ register }) => register());
   import('./components/form-field').then(({ register }) => register());
   import('./components/form-container').then(({ register }) => register());
+  import('./components/terminal-window').then(({ register }) => register());
+  import('./components/terminal-intro').then(({ register }) => register());
+  import('./components/theme-picker').then(({ register }) => register());
 }

@@ -1,0 +1,138 @@
+/* Newspaper Tabloid theme — 1920s sensational */
+body[data-theme="newspaper-tabloid"] {
+  /* Layer 1 — Theme primitives */
+  --theme-bg: #FFFFFF;
+  --theme-bg-surface: #F5F5F5;
+  --theme-bg-elevated: #FFFFFF;
+  --theme-fg-primary: #000000;
+  --theme-fg-secondary: #222222;
+  --theme-fg-muted: #555555;
+  --theme-accent: #CC0000;
+  --theme-accent-light: #FF0000;
+  --theme-accent-hover: #990000;
+  --theme-border: #000000;
+  --theme-border-strong: #000000;
+  --theme-radius: 0;
+  --theme-radius-small: 0;
+  --theme-shadow-medium: none;
+  --theme-shadow-strong: none;
+  --theme-hover-transform: none;
+  --theme-overlay-content: none;
+  --theme-overlay-bg: none;
+  --theme-overlay-opacity: 0;
+
+  /* Typography */
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Component internal vars (cross Shadow DOM) */
+  --card-icon-display: none;
+  --card-badge-display: none;
+  --sh-text-align: left;
+
+  /* Button tokens */
+  --btn-primary-bg: #CC0000;
+  --btn-primary-color: #FFFFFF;
+  --btn-radius: 0;
+  --btn-primary-shadow: none;
+  --btn-font: 'Inter', sans-serif;
+  --btn-primary-hover-transform: none;
+  --btn-primary-hover-shadow: none;
+  --btn-secondary-color: #000000;
+  --btn-secondary-border: 3px solid #000000;
+  --btn-secondary-hover-bg: rgba(0, 0, 0, 0.05);
+  --btn-secondary-hover-border-color: #CC0000;
+
+  /* Animation tokens */
+  --animate-initial-transform: none;
+  --animate-transition: opacity 0.3s ease;
+  --animate-visible-transform: none;
+
+  /* Card overrides */
+  --card-bg-alt: #FFFFFF;
+  --card-border: 3px solid #000000;
+  --card-accent-color: #CC0000;
+  --card-icon-bg: #CC0000;
+  --card-icon-color: #FFFFFF;
+  --card-highlight-dot: #FFDD00;
+  --card-highlight-dot-radius: 0;
+  --card-badge-color: #CC0000;
+  --card-badge-opacity: 1;
+  --card-arrow-color: #CC0000;
+  --card-hover-shadow: none;
+  --card-hover-border-color: #CC0000;
+  --card-hover-bg: #F5F5F5;
+
+  /* Section */
+  --section-bg-alt: #F5F5F5;
+  --section-bg-emphasis: #000000;
+
+  /* Hero — bold red background */
+  --hero-bg: #CC0000;
+  --hero-headline-color: #FFFFFF;
+  --hero-accent-color: #FFDD00;
+  --hero-subheadline-color: rgba(255, 255, 255, 0.85);
+
+  /* Form */
+  --form-bg: #FFFFFF;
+  --form-border: 3px solid #000000;
+  --form-input-border: 2px solid #000000;
+  --form-shadow: none;
+  --form-focus-border-color: #CC0000;
+  --form-focus-shadow: 0 0 0 2px rgba(204, 0, 0, 0.2);
+  --form-submit-bg: #CC0000;
+  --form-submit-color: #FFFFFF;
+  --form-submit-shadow: none;
+  --form-submit-hover-transform: none;
+  --form-submit-hover-shadow: none;
+
+  /* Phone button */
+  --phone-bg: transparent;
+  --phone-color: #CC0000;
+  --phone-border: 3px solid #CC0000;
+  --phone-radius: 0;
+  --phone-hover-bg: #CC0000;
+  --phone-hover-color: #FFFFFF;
+  --phone-hover-transform: none;
+  --phone-hover-shadow: none;
+
+  /* Nav */
+  --nav-logo-color: #000000;
+  --nav-logo-icon-color: #CC0000;
+  --nav-link-color: #000000;
+  --nav-link-hover-color: #CC0000;
+
+  /* Footer */
+  --footer-bg: #000000;
+  --footer-accent-bg: #CC0000;
+
+  /* Theme picker */
+  --picker-trigger-color: #555555;
+  --picker-menu-bg: #FFFFFF;
+  --picker-menu-border: 3px solid #000000;
+  --picker-option-hover-bg: #F5F5F5;
+}
+
+/* Headings in tabloid use heavier weight */
+body[data-theme="newspaper-tabloid"] h1,
+body[data-theme="newspaper-tabloid"] h2,
+body[data-theme="newspaper-tabloid"] h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* Dark-context for tabloid */
+body[data-theme="newspaper-tabloid"] .dark-context {
+  --section-header-title-color: #FFFFFF;
+  --section-header-subtitle-color: rgba(255, 255, 255, 0.75);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: 2px solid rgba(255, 255, 255, 0.2);
+  --card-hover-bg: rgba(255, 255, 255, 0.08);
+  --card-hover-border-color: #FFDD00;
+  --card-icon-bg: transparent;
+  --card-icon-color: #FFDD00;
+  --card-title-color: #FFFFFF;
+  --card-description-color: rgba(255, 255, 255, 0.7);
+  --card-badge-color: #FFDD00;
+}

@@ -1,0 +1,131 @@
+/* Newspaper Broadsheet theme — 1900s formal newspaper */
+body[data-theme="newspaper-broadsheet"] {
+  /* Layer 1 — Theme primitives */
+  --theme-bg: #FFFEF9;
+  --theme-bg-surface: #F5F0E8;
+  --theme-bg-elevated: #FFFEF9;
+  --theme-fg-primary: #1a1a1a;
+  --theme-fg-secondary: #3d3d3d;
+  --theme-fg-muted: #6b6b6b;
+  --theme-accent: #8B0000;
+  --theme-accent-light: #A52A2A;
+  --theme-accent-hover: #6B0000;
+  --theme-border: #c4b8a8;
+  --theme-border-strong: #1a1a1a;
+  --theme-radius: 0;
+  --theme-radius-small: 0;
+  --theme-shadow-medium: none;
+  --theme-shadow-strong: none;
+  --theme-hover-transform: none;
+  --theme-overlay-content: '';
+  --theme-overlay-bg: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  --theme-overlay-opacity: 1;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Inter', 'Georgia', serif;
+
+  /* Newspaper-specific tokens */
+  --news-rule-width: 1px;
+  --news-rule-color: #1a1a1a;
+  --news-rule-style: solid;
+  --news-column-gap: 2rem;
+
+  /* Component internal vars (cross Shadow DOM) */
+  --card-icon-display: none;
+  --card-badge-display: none;
+  --sh-text-align: left;
+
+  /* Button tokens */
+  --btn-primary-bg: #8B0000;
+  --btn-primary-color: #FFFEF9;
+  --btn-radius: 0;
+  --btn-primary-shadow: none;
+  --btn-primary-hover-transform: none;
+  --btn-primary-hover-shadow: none;
+  --btn-secondary-color: #1a1a1a;
+  --btn-secondary-border: 1px solid #1a1a1a;
+  --btn-secondary-hover-bg: rgba(26, 26, 26, 0.05);
+  --btn-secondary-hover-border-color: #8B0000;
+
+  /* Animation tokens */
+  --animate-initial-transform: none;
+  --animate-transition: opacity 0.4s ease;
+  --animate-visible-transform: none;
+
+  /* Card overrides */
+  --card-bg-alt: #FFFEF9;
+  --card-border: 1px solid #1a1a1a;
+  --card-accent-color: #8B0000;
+  --card-icon-bg: transparent;
+  --card-icon-color: #8B0000;
+  --card-highlight-dot: #8B0000;
+  --card-highlight-dot-radius: 0;
+  --card-badge-color: #8B0000;
+  --card-badge-opacity: 1;
+  --card-arrow-color: #8B0000;
+  --card-hover-shadow: none;
+  --card-hover-border-color: #8B0000;
+  --card-hover-bg: #F5F0E8;
+
+  /* Section */
+  --section-bg-alt: #F5F0E8;
+  --section-bg-emphasis: #1a1a1a;
+
+  /* Hero */
+  --hero-bg: #1a1a1a;
+  --hero-headline-color: #FFFEF9;
+  --hero-accent-color: #e8c4a0;
+  --hero-subheadline-color: rgba(255, 254, 249, 0.75);
+
+  /* Form */
+  --form-bg: #FFFEF9;
+  --form-shadow: none;
+  --form-focus-border-color: #8B0000;
+  --form-focus-shadow: 0 0 0 2px rgba(139, 0, 0, 0.15);
+  --form-submit-bg: #8B0000;
+  --form-submit-color: #FFFEF9;
+  --form-submit-shadow: none;
+  --form-submit-hover-transform: none;
+  --form-submit-hover-shadow: none;
+
+  /* Phone button */
+  --phone-bg: transparent;
+  --phone-color: #8B0000;
+  --phone-border: 1px solid #8B0000;
+  --phone-radius: 0;
+  --phone-hover-bg: #8B0000;
+  --phone-hover-color: #FFFEF9;
+  --phone-hover-transform: none;
+  --phone-hover-shadow: none;
+
+  /* Nav */
+  --nav-logo-color: #1a1a1a;
+  --nav-logo-icon-color: #8B0000;
+  --nav-link-color: #3d3d3d;
+  --nav-link-hover-color: #8B0000;
+
+  /* Footer */
+  --footer-bg: #1a1a1a;
+  --footer-accent-bg: #8B0000;
+
+  /* Theme picker */
+  --picker-trigger-color: #6b6b6b;
+  --picker-menu-bg: #FFFEF9;
+  --picker-menu-border: 1px solid #1a1a1a;
+  --picker-option-hover-bg: #F5F0E8;
+}
+
+/* Dark-context for broadsheet */
+body[data-theme="newspaper-broadsheet"] .dark-context {
+  --section-header-title-color: #FFFEF9;
+  --section-header-subtitle-color: rgba(255, 254, 249, 0.7);
+  --card-bg: rgba(255, 254, 249, 0.05);
+  --card-border: 1px solid rgba(255, 254, 249, 0.15);
+  --card-hover-bg: rgba(255, 254, 249, 0.08);
+  --card-hover-border-color: rgba(255, 254, 249, 0.3);
+  --card-icon-color: #e8c4a0;
+  --card-title-color: #FFFEF9;
+  --card-description-color: rgba(255, 254, 249, 0.65);
+  --card-badge-color: #e8c4a0;
+}

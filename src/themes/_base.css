@@ -1,0 +1,66 @@
+/* Base theme token mappings (Layer 2 → Layer 1)
+   Always import this file before any theme file.
+   Theme files set Layer 1 primitives (--theme-*) which flow into Layer 2 component tokens.
+   Tokens not mapped here retain their theme-file defaults. */
+
+body {
+  /* Background mappings */
+  --card-bg: var(--theme-bg-surface);
+  --section-bg-default: var(--theme-bg);
+  --content-panel-bg: var(--theme-bg-elevated);
+  --form-input-bg: var(--theme-bg);
+
+  /* Primary text (headings, titles) */
+  --card-title-color: var(--theme-fg-primary);
+  --content-heading-color: var(--theme-fg-primary);
+  --section-header-title-color: var(--theme-fg-primary);
+
+  /* Body text */
+  --content-body-color: var(--theme-fg-secondary);
+  --card-highlight-color: var(--theme-fg-secondary);
+  --form-label-color: var(--theme-fg-secondary);
+  --form-input-color: var(--theme-fg-secondary);
+
+  /* Muted text */
+  --content-muted-color: var(--theme-fg-muted);
+  --card-description-color: var(--theme-fg-muted);
+  --section-header-subtitle-color: var(--theme-fg-muted);
+  --form-placeholder-color: var(--theme-fg-muted);
+
+  /* Accent */
+  --content-label-color: var(--theme-accent);
+  --card-type-color: var(--theme-accent);
+
+  /* Borders */
+  --content-border-color: var(--theme-border);
+  --card-border: 1px solid var(--theme-border);
+  --form-border: 1px solid var(--theme-border);
+  --form-input-border: 1px solid var(--theme-border);
+
+  /* Radius */
+  --card-radius: var(--theme-radius);
+  --form-radius: var(--theme-radius);
+  --content-panel-radius: var(--theme-radius-small);
+  --form-input-radius: var(--theme-radius-small);
+  --card-icon-radius: var(--theme-radius-small);
+  --form-submit-radius: var(--theme-radius-small);
+
+  /* Hover */
+  --card-hover-transform: var(--theme-hover-transform);
+}
+
+/* Body overlay for theme effects (CRT scanlines, paper texture, etc.) */
+body::after {
+  content: var(--theme-overlay-content, none);
+  position: fixed;
+  inset: 0;
+  background: var(--theme-overlay-bg, none);
+  opacity: var(--theme-overlay-opacity, 0);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Hide decorative elements that belong to a specific theme */
+body[data-theme] [data-theme-decoration]:not([data-theme-decoration="all"]) {
+  display: none;
+}

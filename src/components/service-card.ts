@@ -1,6 +1,14 @@
 import { CardBase } from './card-base';
 
 const STYLES = `
+  :host {
+    flex-direction: var(--card-layout, column);
+  }
+
+  .icon-area {
+    display: var(--card-icon-display, flex);
+  }
+
   :host::before {
     content: '';
     position: absolute;
