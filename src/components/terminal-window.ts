@@ -1,14 +1,21 @@
 const STYLES = `
   :host {
     display: block;
+  }
+
+  :host([closed]) {
+    display: none !important;
+  }
+
+  /* --- Wrapper handles all visual/layout styling --- */
+  /* External CSS on the host element cannot interfere with these rules
+     because they target shadow DOM internals. */
+
+  .wrapper {
     position: relative;
   }
 
-  :host(:not([active])) .titlebar {
-    display: none;
-  }
-
-  :host([active]) {
+  :host([active]) .wrapper {
     background: var(--tw-bg, #0d1117);
     border: var(--tw-border, 1px solid #1a3a1a);
     border-radius: var(--tw-border-radius, 8px 8px 0 0);
@@ -17,13 +24,15 @@ const STYLES = `
     overflow: visible;
   }
 
-  :host([closed]) {
-    display: none !important;
+  :host(:not([active])) .titlebar {
+    display: none;
   }
 
-  :host([minimized]) {
+  /* --- Minimized state --- */
+
+  :host([minimized]) .wrapper {
     padding-top: 0;
-    min-height: 0;
+    min-height: 36px;
     max-height: 36px;
     overflow: hidden;
   }
@@ -32,22 +41,37 @@ const STYLES = `
     display: none;
   }
 
-  :host([maximized]) {
+  /* --- Maximized state --- */
+
+  :host([maximized]) .wrapper {
     display: flex;
     flex-direction: column;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    margin: 0 !important;
-    padding-top: 0 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding-top: 0;
     z-index: 1000;
-    border-radius: 0 !important;
-    border: none !important;
-    max-height: none !important;
-    min-height: 100vh !important;
+    border-radius: 0;
+    border: none;
+    max-height: none;
+    min-height: 100vh;
   }
+
+  :host([maximized]) .titlebar {
+    position: relative;
+    border-radius: 0;
+    flex-shrink: 0;
+  }
+
+  :host([maximized]) .content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  /* --- Titlebar --- */
 
   .titlebar {
     position: absolute;
@@ -63,16 +87,7 @@ const STYLES = `
     z-index: 1;
   }
 
-  :host([maximized]) .titlebar {
-    position: relative;
-    border-radius: 0;
-    flex-shrink: 0;
-  }
-
-  :host([maximized]) .content {
-    flex: 1;
-    overflow-y: auto;
-  }
+  /* --- Dots --- */
 
   .dots {
     display: flex;
@@ -110,6 +125,8 @@ const STYLES = `
 
   .dot[hidden] { display: none; }
 
+  /* --- Title text --- */
+
   .title-text {
     margin-left: 8px;
     font-family: var(--tw-title-font, 'JetBrains Mono', monospace);
@@ -121,12 +138,16 @@ const STYLES = `
     z-index: 2;
   }
 
+  /* --- Content --- */
+
   .content {
     position: relative;
   }
 
+  /* --- Responsive --- */
+
   @media (max-width: 768px) {
-    :host([active]) {
+    :host([active]) .wrapper {
       margin: var(--tw-margin-mobile, 0.75rem 0.5rem);
     }
 
@@ -137,16 +158,18 @@ const STYLES = `
 `;
 
 const TEMPLATE = `
-  <div class="titlebar" part="titlebar">
-    <div class="dots" part="dots">
-      <button class="dot dot-red" aria-label="Close section"></button>
-      <button class="dot dot-yellow" aria-label="Minimize section"></button>
-      <button class="dot dot-green" aria-label="Maximize section"></button>
+  <div class="wrapper" part="wrapper">
+    <div class="titlebar" part="titlebar">
+      <div class="dots" part="dots">
+        <button class="dot dot-red" aria-label="Close section"></button>
+        <button class="dot dot-yellow" aria-label="Minimize section"></button>
+        <button class="dot dot-green" aria-label="Maximize section"></button>
+      </div>
+      <span class="title-text" part="title"></span>
     </div>
-    <span class="title-text" part="title"></span>
-  </div>
-  <div class="content" part="content">
-    <slot></slot>
+    <div class="content" part="content">
+      <slot></slot>
+    </div>
   </div>
 `;
 
