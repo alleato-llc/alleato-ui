@@ -12,6 +12,13 @@ const STYLES = `
     display: none !important;
   }
 
+  /* Margin lives on the host — it's spacing, safe for consumers to override.
+     The properties that broke things (display, overflow, flex) are on .wrapper. */
+
+  :host([active]) {
+    margin: var(--tw-margin, 1.5rem 1rem);
+  }
+
   /* --- Maximized: position/z-index MUST be on the host so it can
      escape parent stacking contexts and sit above fixed navbars --- */
 
@@ -22,19 +29,18 @@ const STYLES = `
     margin: 0 !important;
   }
 
-  /* --- Wrapper handles visual styling (background, border, radius, padding).
-     External CSS on the host cannot interfere with these rules. --- */
+  /* --- Wrapper handles visual styling (background, border, radius,
+     padding, display, overflow). External CSS on the host element
+     cannot interfere with these shadow DOM rules. --- */
 
   .wrapper {
     position: relative;
-    height: 100%;
   }
 
   :host([active]) .wrapper {
     background: var(--tw-bg, #0d1117);
     border: var(--tw-border, 1px solid #1a3a1a);
     border-radius: var(--tw-border-radius, 8px 8px 0 0);
-    margin: var(--tw-margin, 1.5rem 1rem);
     padding-top: 40px;
     overflow: visible;
   }
@@ -57,7 +63,7 @@ const STYLES = `
   :host([maximized]) .wrapper {
     display: flex;
     flex-direction: column;
-    margin: 0;
+    height: 100%;
     padding-top: 0;
     border-radius: 0;
     border: none;
@@ -152,7 +158,7 @@ const STYLES = `
   /* --- Responsive --- */
 
   @media (max-width: 768px) {
-    :host([active]) .wrapper {
+    :host([active]) {
       margin: var(--tw-margin-mobile, 0.75rem 0.5rem);
     }
 
