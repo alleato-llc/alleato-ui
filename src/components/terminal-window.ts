@@ -1,18 +1,33 @@
 const STYLES = `
   :host {
     display: block;
+    position: relative;
+  }
+
+  :host(:not([active])) .titlebar {
+    display: none;
   }
 
   :host([closed]) {
     display: none !important;
   }
 
-  /* --- Wrapper handles all visual/layout styling --- */
-  /* External CSS on the host element cannot interfere with these rules
-     because they target shadow DOM internals. */
+  /* --- Maximized: position/z-index MUST be on the host so it can
+     escape parent stacking contexts and sit above fixed navbars --- */
+
+  :host([maximized]) {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 1000;
+    margin: 0 !important;
+  }
+
+  /* --- Wrapper handles visual styling (background, border, radius, padding).
+     External CSS on the host cannot interfere with these rules. --- */
 
   .wrapper {
     position: relative;
+    height: 100%;
   }
 
   :host([active]) .wrapper {
@@ -22,10 +37,6 @@ const STYLES = `
     margin: var(--tw-margin, 1.5rem 1rem);
     padding-top: 40px;
     overflow: visible;
-  }
-
-  :host(:not([active])) .titlebar {
-    display: none;
   }
 
   /* --- Minimized state --- */
@@ -46,14 +57,8 @@ const STYLES = `
   :host([maximized]) .wrapper {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     margin: 0;
     padding-top: 0;
-    z-index: 1000;
     border-radius: 0;
     border: none;
     max-height: none;
